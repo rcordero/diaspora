@@ -11,6 +11,10 @@ def sqlite?
   @using_sqlite ||= defined?(ActiveRecord::ConnectionAdapters::SQLite3Adapter) && ActiveRecord::Base.connection.class == ActiveRecord::ConnectionAdapters::SQLite3Adapter
 end
 
+def heroku?
+  @using_heroku ||= ENV['heroku']
+end
+
 # Load the rails application
 require File.expand_path('../application', __FILE__)
 Haml::Template.options[:format] = :html5
