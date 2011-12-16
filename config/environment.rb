@@ -12,7 +12,7 @@ def sqlite?
 end
 
 def heroku?
-  @using_heroku ||= ENV['heroku']
+  @using_heroku ||= ENV['HEROKU']
 end
 
 # Load the rails application

@@ -11,6 +11,11 @@ namespace :heroku do
 
     puts "Generating and setting a new secret token"
     token = ActiveSupport::SecureRandom.hex(40)#reloads secret token every time you reload vars.... this expires cookies, and kinda sucks
-    system "#{HEROKU_CONFIG_ADD_COMMAND}#{heroku_env} SECRET_TOKEN=#{token}"
+    system "#{HEROKU_CON`FIG_ADD_COMMAND}#{heroku_env} SECRET_TOKEN=#{token}"
+  end
+
+  task :install_requirements do
+    system 'heroku addons:add logging:expanded'
+    system 'heroku addons:add redistogo:nano'
   end
 end
