@@ -7,7 +7,8 @@ namespace :heroku do
     application_config.delete_if { |k, v| v.blank? }
 
     #this is the default location of the cert file on heroku, so we will set it forcefully
-    application_config.merge!(:ca_file => '/usr/lib/ssl/certs/ca-certificates.crt')
+    application_config.merge!('ca_file' => '/usr/lib/ssl/certs/ca-certificates.crt')
+
 
     heroku_env = application_config.map{|k, v| "#{k}=#{v}"}.join(' ')
 
