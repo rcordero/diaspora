@@ -2,7 +2,7 @@
 #   licensed under the Affero General Public License version 3 or later.  See
 #   the COPYRIGHT file.
 
-unless ENV['HEROKU']
+unless EnviromentConfiguration.cache_git_version?
   s = `git show --name-only 2>/dev/null || :`
   if (s.nil? or s.empty?)
        path =  File.expand_path("config/gitversion")
