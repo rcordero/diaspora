@@ -60,6 +60,8 @@ module Diaspora
 
   module Socketable
     def socket_to_user(user_or_id, opts={})
+      return # don't ever do this
+
       begin
         SocketsController.new.outgoing(user_or_id, self, opts)
       rescue
@@ -68,6 +70,8 @@ module Diaspora
     end
 
     def unsocket_from_user(user_or_id, opts={})
+      return # don't ever do this
+
       begin
         SocketsController.new.outgoing(user_or_id, Retraction.for(self), opts)
       rescue
